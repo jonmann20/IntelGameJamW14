@@ -121,5 +121,7 @@ public class FlowEffectScript : MonoBehaviour {
 		transform.position += new Vector3(positionDifferential.x, positionDifferential.y, 0);
 
 		Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
+
+        Debug.Log(Time.timeScale);
 	}
 }
