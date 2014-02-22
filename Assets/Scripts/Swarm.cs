@@ -47,6 +47,7 @@ public class Swarm : MonoBehaviour {
 		sprRend.sprite = antibody;
 
 		entity.transform.parent = entitiesHolder.transform;
+		entity.AddComponent("FlowEffectScript");
 		entities.Add(entity);
 
 		return entity;

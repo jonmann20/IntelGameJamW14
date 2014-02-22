@@ -56,8 +56,10 @@ public class FlowEffectScript : MonoBehaviour {
 		}
 
 		print("PANTS!");
+		print("final x: " + xCoordinateString + ']');
+		print("final y: " + yCoordinateString + ']');
 		//HANDLE FINAL POINT
-		flowPoints.Add(new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString)));
+		//flowPoints.Add(new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString)));
 
 		print("FLOW POINTS:");
 		foreach(Vector2 v in flowPoints)
