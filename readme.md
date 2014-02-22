@@ -1,9 +1,10 @@
 IntelGameJamW14
 ===============
 
+For science you monster.
+
 Credits
 -------
-* [Jon Wiedmann](mailto:jonwiedmann@gmail.com)
-* [Austin Yarger](mailto:ayarger@umich.edu)
-* Nick
-* Your name here
+* jonwiedmann@gmail.com Jon Wiedmann
+* ayarger@umich.edu Austin Yarger
+* ndeden@umich.edu Nicholas Dedenbach
