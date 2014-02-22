@@ -62,5 +62,7 @@ public class FlowEffectScript : MonoBehaviour {
 		rigidbody2D.velocity += positionDifferential;
 
 		Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
+
+        Debug.Log(Time.timeScale);
 	}
 }
