@@ -1,28 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy1Script : MonoBehaviour {
+public class Enemy1Script : Enemy {
 
-	int numAntibodiesAttached = 0;
-	const int ANTIBODY_RESISTANCE = 20;
-	const float MAX_HEALTH = 50;
-	float health = MAX_HEALTH;
-
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
+<<<<<<< HEAD
 		float ratio = (health / MAX_HEALTH) * 0.5f;
 		print("health: " + health.ToString() + " ratio: " + ratio);
+=======
+		float ratio = health / MAX_HEALTH;
+		//print("health: " + health.ToString() + " ratio: " + ratio);
+>>>>>>> f97306af9a849041106c13d35184d47bf83c7d33
 		transform.localScale = new Vector3(ratio, ratio, ratio);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-
-		print("COLLISION!");
-
 		if (coll.gameObject.tag == "Antibody")
 		{
 			numAntibodiesAttached ++;

@@ -29,6 +29,10 @@ public class Overworld : MonoBehaviour {
 		if(hor == 0){
 			isPressed = false;
 		}
+
+		if(Input.GetButtonDown("Start")){
+			Application.LoadLevel("stage1");
+		}
 	}
 
 	void OnGUI(){
