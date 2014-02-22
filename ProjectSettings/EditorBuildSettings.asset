@@ -6,16 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/title.unity
-=======
-    path: Assets/Scenes/stage1.unity
->>>>>>> 315fcf029d8e695a168f9e153d3d1a6aa775992d
-  - enabled: 1
-    path: Assets/Scenes/stage1.unity
-  - enabled: 1
-    path: Assets/Scenes/stage1.unity
   - enabled: 1
     path: Assets/Scenes/overworld.unity
   - enabled: 1
-    path: Assets/Scenes/title.unity
+    path: Assets/Scenes/stage1.unity

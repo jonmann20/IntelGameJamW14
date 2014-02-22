@@ -3,19 +3,6 @@ using System.Collections;
 
 public class Enemy1Script : Enemy {
 
-<<<<<<< HEAD
-=======
-	int numAntibodiesAttached = 0;
-	const int ANTIBODY_RESISTANCE = 20;
-	const float MAX_HEALTH = 50;
-	float health = MAX_HEALTH;
-
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
->>>>>>> 315fcf029d8e695a168f9e153d3d1a6aa775992d
 	void Update () {
 		float ratio = health / MAX_HEALTH;
 		//print("health: " + health.ToString() + " ratio: " + ratio);
