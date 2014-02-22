@@ -4,13 +4,9 @@ using System.Collections;
 public class Enemy1Script : Enemy {
 
 	void Update () {
-<<<<<<< HEAD
 		float ratio = (health / MAX_HEALTH) * 0.5f;
 		print("health: " + health.ToString() + " ratio: " + ratio);
-=======
-		float ratio = health / MAX_HEALTH;
-		//print("health: " + health.ToString() + " ratio: " + ratio);
->>>>>>> f97306af9a849041106c13d35184d47bf83c7d33
+
 		transform.localScale = new Vector3(ratio, ratio, ratio);
 	}
 
