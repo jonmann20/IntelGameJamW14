@@ -5,7 +5,7 @@ public class Enemy1Script : MonoBehaviour {
 
 	int numAntibodiesAttached = 0;
 	const int ANTIBODY_RESISTANCE = 20;
-	const float MAX_HEALTH = 20;
+	const float MAX_HEALTH = 50;
 	float health = MAX_HEALTH;
 
 	void Start () {
@@ -34,10 +34,7 @@ public class Enemy1Script : MonoBehaviour {
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 				(renderer as SpriteRenderer).color = Color.blue;
 		}
-	}
 
-	void OnCollisionStay2D(Collision2D coll)
-	{
 		if (coll.gameObject.tag == "Player")
 		{
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
@@ -49,6 +46,19 @@ public class Enemy1Script : MonoBehaviour {
 			else
 			{
 				Destroy(coll.gameObject);
+			}
+		}
+	}
+
+	void OnCollisionStay2D(Collision2D coll)
+	{
+		if (coll.gameObject.tag == "Player")
+		{
+			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
+			{
+				health --;
+				if(health <= 0)
+					Destroy(gameObject);
 			}
 		}
 	}
