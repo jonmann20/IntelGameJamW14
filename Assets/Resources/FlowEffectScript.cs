@@ -6,7 +6,7 @@ public class FlowEffectScript : MonoBehaviour {
 
 	const float FLOW_RATE = 0.02f;
 
-	int currentStage = 1;
+	int currentStage = 3;
 	List<Vector2> flowPoints = new List<Vector2>();
 
 
@@ -45,18 +45,17 @@ public class FlowEffectScript : MonoBehaviour {
 			}
 			if(!coordBit)
 			{
-				print("x: " + c);
 				xCoordinateString += c;
 				continue;
 			}
 			if(coordBit)
 			{
-				print("y: " + c);
 				yCoordinateString += c;
 				continue;
 			}
 		}
-		
+
+		print("PANTS!");
 		//HANDLE FINAL POINT
 		flowPoints.Add(new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString)));
 
@@ -118,5 +117,7 @@ public class FlowEffectScript : MonoBehaviour {
 
 		Vector2 positionDifferential = getDP (nearestFlowPoint, nextFlowPoint);
 		transform.position += new Vector3(positionDifferential.x, positionDifferential.y, 0);
+
+		Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
 	}
 }
