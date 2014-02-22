@@ -23,7 +23,7 @@ public class Swarm : MonoBehaviour {
 		AntibodyPrefab = Resources.Load<GameObject>("Antibody");
 
 		for(int i=0; i < 10; ++i){
-			GameObject entity = createEntity(new Vector3(2 + Random.Range(0.0f, 1.0f), 2, 0));
+			GameObject entity = createEntity(new Vector3(2.5f + Random.Range(0.0f, 1.0f), 2, 0));
 		}
 	}
 
@@ -41,11 +41,14 @@ public class Swarm : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 
+			//LAUNCH ANTIBODIES
 			foreach(GameObject g in entities)
 			{
+				if(g == null)
+					continue;
 				GameObject newAntibody = Instantiate(AntibodyPrefab, g.transform.position, Quaternion.identity) as GameObject;
 				Vector3 unit3 = point - g.transform.position;
-				Vector2 unit2 = new Vector2(unit3.x, unit3.y);
+				Vector2 unit2 = new Vector2(unit3.x + Random.Range(-0.5f, 0.5f), unit3.y + Random.Range(-0.5f, 0.5f));
 				unit2.Normalize();
 				newAntibody.rigidbody2D.velocity = unit2 * ANTIBODY_SHOT_SPEED;
 
@@ -66,6 +69,9 @@ public class Swarm : MonoBehaviour {
 
 	public void move(Vector3 p){
 		for(int i=0; i < entities.Count; ++i){
+			if(entities[i] == null)
+				continue;
+
 			if(checkDirChange(entities[i], p)){
 				entities[i].rigidbody2D.velocity *= 0.25f;
 			}
@@ -89,6 +95,8 @@ public class Swarm : MonoBehaviour {
 
 	void checkVelocity(){
 		for(int i=0; i < entities.Count; ++i){
+			if(entities[i] == null)
+				continue;
 			Vector3 vel = entities[i].rigidbody2D.velocity;
 
 			if(vel.x > 3){

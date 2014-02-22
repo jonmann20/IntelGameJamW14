@@ -23,7 +23,7 @@ public class FlowGuiScript : MonoBehaviour {
 
 	void Update()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetKeyDown("p"))
 		{
 			Vector2 myPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

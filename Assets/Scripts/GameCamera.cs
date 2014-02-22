@@ -36,13 +36,16 @@ public class GameCamera : MonoBehaviour {
 	// returns the 'center' between the followed objects
 	void calcBoundingBox() {
 
-		Vector2 min = Vector2.zero;
-		Vector2 max = Vector2.zero;
+		Vector2 min = new Vector2(99999, 99999);
+		Vector2 max = new Vector2(-99999, -99999);
 		
 		foreach(GameObject s in swarm) {
 			// find the min and max X and Y of the set
 			// this describes an n-vertex polygon 
 			// whose center is the midpoint average of all the entities
+
+			if(s == null)
+				continue;
 
 			Vector2 p = s.transform.position;
 
