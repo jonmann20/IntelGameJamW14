@@ -1,0 +1,67 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class FlowBank : MonoBehaviour {
+
+	public static List<Vector2> flowPoints = new List<Vector2>();
+
+	public void Awake()
+	{
+		initFlowPoints(4);
+	}
+
+	//PARSE FLOW FILE FOR STAGE stageNumber
+	public static void initFlowPoints(int stageNumber)
+	{
+		string fileName = "stage" + stageNumber.ToString() + "flow";
+		string content = (Resources.Load(fileName) as TextAsset).text;
+		print("FILE_LOADED: " + stageNumber.ToString());
+		
+		string xCoordinateString = "";
+		string yCoordinateString = "";
+		bool coordBit = false; //X-coords = false, Y-coords = true
+		
+		foreach(char c in content)
+		{
+			if(c == ' ' || c == '\n')
+			{
+				if(coordBit) //we have both x and y coords-- make new point
+				{
+					print("new point");
+					print("xcoord: " + xCoordinateString);
+					print("ycoord: " + yCoordinateString);
+					
+					Vector2 newPoint = new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString));
+					flowPoints.Add(newPoint);
+					xCoordinateString = "";
+					yCoordinateString = "";
+				}
+				coordBit = !coordBit;
+				continue;
+			}
+			if(!coordBit)
+			{
+				xCoordinateString += c;
+				continue;
+			}
+			if(coordBit)
+			{
+				yCoordinateString += c;
+				continue;
+			}
+		}
+		
+		print("PANTS!");
+		print("final x: " + xCoordinateString + ']');
+		print("final y: " + yCoordinateString + ']');
+		//HANDLE FINAL POINT
+		//flowPoints.Add(new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString)));
+		
+		print("FLOW POINTS:");
+		foreach(Vector2 v in flowPoints)
+		{
+			print(v.ToString());
+		}
+	}
+}

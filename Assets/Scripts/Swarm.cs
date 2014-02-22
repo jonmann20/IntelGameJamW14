@@ -7,20 +7,23 @@ public class Swarm : MonoBehaviour {
 	public static Swarm that;
 	GameObject entitiesHolder;
 	GameObject entityPrefab;
+	GameObject AntibodyPrefab;
 
 	public Sprite antibody, bloodCell_white;
 
 	public List<GameObject> entities;
 
+	const float ANTIBODY_SHOT_SPEED = 10.0f;
 
 	void Awake(){
 		that = this;
 		entitiesHolder = new GameObject("EntitiesHolder");
 		entities = new List<GameObject>();
 		entityPrefab = Resources.Load<GameObject>("Entity");
+		AntibodyPrefab = Resources.Load<GameObject>("Antibody");
 
 		for(int i=0; i < 10; ++i){
-			GameObject entity = createEntity(new Vector3(0.5f*i, 0.5f*i, 0));
+			GameObject entity = createEntity(new Vector3(2, 2, 0));
 		}
 	}
 
@@ -31,6 +34,23 @@ public class Swarm : MonoBehaviour {
 			point.z = 0;
 
 			move(point);
+		}
+
+		if(Input.GetMouseButtonDown(1))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
+
+			foreach(GameObject g in entities)
+			{
+				GameObject newAntibody = Instantiate(AntibodyPrefab, g.transform.position, Quaternion.identity) as GameObject;
+				Vector3 unit3 = point - g.transform.position;
+				Vector2 unit2 = new Vector2(unit3.x, unit3.y);
+				unit2.Normalize();
+				print("unit: " + unit2.ToString());
+				newAntibody.rigidbody2D.velocity = unit2 * ANTIBODY_SHOT_SPEED;
+
+			}
 		}
 
 		checkVelocity();
