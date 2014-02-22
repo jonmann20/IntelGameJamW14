@@ -35,8 +35,6 @@ public class Title : MonoBehaviour {
 		textStyle.alignment = TextAnchor.UpperLeft;
 		buttonStyle = new GUIStyle(headingStyle);
 		buttonStyle.fontSize = 14;
-		
-		border = Resources.Load<Texture>("Images/msg_box");
 	}
 
 	void Update(){
@@ -70,7 +68,6 @@ public class Title : MonoBehaviour {
 			case TitleState.START:
 
 			GUI.TextArea(new Rect(Screen.width/2 - 500, Screen.height/4 - 50, 1000, 100), "Blood Cell Brigade", headingStyle);
-			GUI.TextArea(new Rect(Screen.width/2 - 500, Screen.height/4 + 25, 1000, 100), "A game by some people", subheadingStyle);
 
 			GUI.TextArea(new Rect(Screen.width/2 - 200, Screen.height/2, 400, 100), "Press Enter", blinkFadeStyle);
 			
@@ -87,7 +84,7 @@ public class Title : MonoBehaviour {
 			cta.CopyTo(c, 0);
 
 			if(GUI.Button(new Rect(Screen.width/2 - 50, Screen.height/2 - 50, 100, 25), c[0], buttonStyle)) {
-				Application.LoadLevel("main");
+				Application.LoadLevel("overworld");
 				return;
 			}
 			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height/2, 200, 25), c[1], buttonStyle)) {
@@ -96,12 +93,6 @@ public class Title : MonoBehaviour {
 			}
 			if(GUI.Button(new Rect(Screen.width/2 - 50, Screen.height/2 + 50, 100, 25), c[2], buttonStyle)) {
 				Application.Quit();
-				return;
-			}
-			
-						
-			if(Input.GetButtonDown("Start")){
-				Application.LoadLevel("overworld");
 				return;
 			}
 			
@@ -114,10 +105,10 @@ public class Title : MonoBehaviour {
 			
 			GUI.TextArea(new Rect(Screen.width/2 - 500, 15, 1000, 100), "How to Play", headingStyle);
 			
-			/*Skills
+			//Skills
 			GUI.TextArea(new Rect(Screen.width/4 - 150, Screen.height/7, 270, 100), "Instructions", subheadingStyle);
 			GUI.TextArea(new Rect(Screen.width/4, Screen.height/7 + 82, 700, 300), "We need them", textStyle);
-			*/
+			
 			break;
 		default:
 			
