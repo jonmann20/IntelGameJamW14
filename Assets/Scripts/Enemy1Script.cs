@@ -14,7 +14,7 @@ public class Enemy1Script : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float ratio = health / MAX_HEALTH;
+		float ratio = (health / MAX_HEALTH) * 0.5f;
 		print("health: " + health.ToString() + " ratio: " + ratio);
 		transform.localScale = new Vector3(ratio, ratio, ratio);
 	}
