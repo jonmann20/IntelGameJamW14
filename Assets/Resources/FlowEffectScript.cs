@@ -6,7 +6,7 @@ public class FlowEffectScript : MonoBehaviour {
 
 	const float FLOW_RATE = 0.02f;
 
-	int currentStage = 3;
+	int currentStage = 4;
 	List<Vector2> flowPoints = new List<Vector2>();
 
 
