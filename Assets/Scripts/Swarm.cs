@@ -6,20 +6,21 @@ public class Swarm : MonoBehaviour {
 
 	public static Swarm that;
 	GameObject entitiesHolder;
+	GameObject entityPrefab;
 
 	public Sprite antibody, bloodCell_white;
 
-	List<GameObject> entities;
+	public List<GameObject> entities;
 
 
 	void Awake(){
 		that = this;
 		entitiesHolder = new GameObject("EntitiesHolder");
 		entities = new List<GameObject>();
+		entityPrefab = Resources.Load<GameObject>("Entity");
 
 		for(int i=0; i < 10; ++i){
-			GameObject entity = createEntity(i);
-			entity.transform.Translate(0.5f*i, 0.5f*i, 0);
+			GameObject entity = createEntity(new Vector3(0.5f*i, 0.5f*i, 0));
 		}
 	}
 
@@ -29,25 +30,16 @@ public class Swarm : MonoBehaviour {
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			point.z = 0;
 
-
 			move(point);
 		}
 
 		checkVelocity();
 	}
 
-	GameObject createEntity(int num){
-		GameObject entity = new GameObject("Entity_" + num);
-		entity.AddComponent<CircleCollider2D>();
-
-		Rigidbody2D rg = entity.AddComponent<Rigidbody2D>();
-		rg.gravityScale = 0;
-
-		SpriteRenderer sprRend = entity.AddComponent<SpriteRenderer>();
-		sprRend.sprite = antibody;
+	GameObject createEntity(Vector3 pos){
+		GameObject entity = Instantiate(entityPrefab, pos, Quaternion.identity) as GameObject;
 
 		entity.transform.parent = entitiesHolder.transform;
-		entity.AddComponent("FlowEffectScript");
 		entities.Add(entity);
 
 		return entity;
@@ -56,7 +48,7 @@ public class Swarm : MonoBehaviour {
 	public void move(Vector3 p){
 		for(int i=0; i < entities.Count; ++i){
 			if(checkDirChange(entities[i], p)){
-				entities[i].rigidbody2D.velocity = Vector3.zero;
+				entities[i].rigidbody2D.velocity *= 0.25f;
 			}
 
 			Vector3 diff = p - entities[i].transform.position;
@@ -72,8 +64,6 @@ public class Swarm : MonoBehaviour {
 		Vector3 x = Vector3.Project(old.rigidbody2D.velocity, p2old);	// vector from old velocity vector to p2old
 
 		Vector3 newP2old = p2old + x;
-
-		//print(x);
 
 		return (newP2old.magnitude > p2old.magnitude);
 	}
