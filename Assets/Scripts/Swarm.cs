@@ -23,7 +23,7 @@ public class Swarm : MonoBehaviour {
 		AntibodyPrefab = Resources.Load<GameObject>("Antibody");
 
 		for(int i=0; i < 10; ++i){
-			GameObject entity = createEntity(new Vector3(2, 2, 0));
+			GameObject entity = createEntity(new Vector3(2 + Random.Range(0.0f, 1.0f), 2, 0));
 		}
 	}
 
@@ -47,7 +47,6 @@ public class Swarm : MonoBehaviour {
 				Vector3 unit3 = point - g.transform.position;
 				Vector2 unit2 = new Vector2(unit3.x, unit3.y);
 				unit2.Normalize();
-				print("unit: " + unit2.ToString());
 				newAntibody.rigidbody2D.velocity = unit2 * ANTIBODY_SHOT_SPEED;
 
 			}
@@ -91,8 +90,6 @@ public class Swarm : MonoBehaviour {
 	void checkVelocity(){
 		for(int i=0; i < entities.Count; ++i){
 			Vector3 vel = entities[i].rigidbody2D.velocity;
-
-			//print (vel.x);
 
 			if(vel.x > 3){
 				vel.x = 3;

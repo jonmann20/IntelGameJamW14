@@ -27,11 +27,7 @@ public class FlowBank : MonoBehaviour {
 			if(c == ' ' || c == '\n')
 			{
 				if(coordBit) //we have both x and y coords-- make new point
-				{
-					print("new point");
-					print("xcoord: " + xCoordinateString);
-					print("ycoord: " + yCoordinateString);
-					
+				{	
 					Vector2 newPoint = new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString));
 					flowPoints.Add(newPoint);
 					xCoordinateString = "";
@@ -51,14 +47,7 @@ public class FlowBank : MonoBehaviour {
 				continue;
 			}
 		}
-		
-		print("PANTS!");
-		print("final x: " + xCoordinateString + ']');
-		print("final y: " + yCoordinateString + ']');
-		//HANDLE FINAL POINT
-		//flowPoints.Add(new Vector2(float.Parse (xCoordinateString), float.Parse(yCoordinateString)));
-		
-		print("FLOW POINTS:");
+
 		foreach(Vector2 v in flowPoints)
 		{
 			print(v.ToString());

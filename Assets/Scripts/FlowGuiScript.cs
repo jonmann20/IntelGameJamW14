@@ -25,7 +25,6 @@ public class FlowGuiScript : MonoBehaviour {
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
-			print(Camera.main.ScreenToWorldPoint(Input.mousePosition).ToString());
 			Vector2 myPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 			flowPoints.Add (myPoint);

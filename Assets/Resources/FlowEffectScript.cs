@@ -9,6 +9,8 @@ public class FlowEffectScript : MonoBehaviour {
 	int currentStage = 4;
 	List<Vector2> flowPoints = new List<Vector2>();
 
+	Vector2 positionDifferential = new Vector2(0, 0);
+
 	Vector2 getNearestFlowPoint()
 	{
 		Vector2 closest = new Vector2(-9999, -9999);
@@ -58,11 +60,14 @@ public class FlowEffectScript : MonoBehaviour {
 		if(FlowBank.flowPoints.Count > indexOfNearestFlowPoint + 1)
 			nextFlowPoint = FlowBank.flowPoints[indexOfNearestFlowPoint + 1];
 
-		Vector2 positionDifferential = getDP (nearestFlowPoint, nextFlowPoint);
-		rigidbody2D.velocity += positionDifferential;
+		positionDifferential = getDP (nearestFlowPoint, nextFlowPoint);
+
 
 		Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
+	}
 
-        Debug.Log(Time.timeScale);
+	void FixedUpdate()
+	{
+		rigidbody2D.velocity += positionDifferential;
 	}
 }
