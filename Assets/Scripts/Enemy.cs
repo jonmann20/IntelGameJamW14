@@ -11,6 +11,16 @@ public abstract class Enemy : MonoBehaviour {
 
 	public GameObject EntityDeath;
 
+	void kill(){
+		Game.points += 10;
+
+		if(Game.points % 50 == 0){
+			// new life!!
+		}
+
+		Destroy(gameObject);
+	}
+
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Antibody")
 		{
@@ -28,9 +38,10 @@ public abstract class Enemy : MonoBehaviour {
 		{
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 			{
-				health --;
-				if(health <= 0)
-					Destroy(gameObject);
+				--health;
+				if(health <= 0){
+					kill();
+				}
 			}
 			else
 			{
@@ -46,9 +57,10 @@ public abstract class Enemy : MonoBehaviour {
 		{
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 			{
-				health --;
-				if(health <= 0)
-					Destroy(gameObject);
+				--health;
+				if(health <= 0){
+					kill();
+				}
 			}
 		}
 	}

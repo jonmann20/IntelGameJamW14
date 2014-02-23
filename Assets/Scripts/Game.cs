@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class Game : MonoBehaviour {
-
-
+	
     public Font font;
     public Texture border;
 
@@ -18,15 +17,16 @@ public class Game : MonoBehaviour {
     public bool paused = false;
 
     public enum PauseState { SELECT, INSTRUCTIONS };
-
     public PauseState pauseState;
+
+	public static int points = 0;
+
 
     void Awake () {
         that = this;
     }
 
-    void Start()
-    {
+    void Start(){
         pauseStyle.normal.textColor = Color.white;
         pauseStyle.font = font;
         pauseStyle.fontSize = 40;
@@ -44,7 +44,8 @@ public class Game : MonoBehaviour {
 	}
 
     void OnGUI() {
-        Debug.Log(that.paused);
+        //Debug.Log(that.paused);
+
         if (that.paused) {
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), " "); 
             switch (pauseState) {
@@ -74,6 +75,10 @@ public class Game : MonoBehaviour {
                     break;
             }
         }
+		else {
+			EzGUI.scaleGUI();
+			EzGUI.placeTxt("Score: " + points, 55, EzGUI.HALFW, 65);
+		}
     }
         
     void togglePause(){
