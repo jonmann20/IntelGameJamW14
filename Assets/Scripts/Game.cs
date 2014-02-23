@@ -38,7 +38,7 @@ public class Game : MonoBehaviour {
     }
 
 	void Update () {
-        if (Input.GetButtonUp("Pause")) {
+        if (Input.GetButtonUp("Pause") && !SuperGlobal.isDemo) {
             togglePause();
         }
 	}
@@ -73,10 +73,16 @@ public class Game : MonoBehaviour {
                     break;
             }
         }
-		else {
-			EzGUI.scaleGUI();
-			EzGUI.placeTxt("Score: " + points, 55, EzGUI.HALFW, 65);
-		}
+        else if (!SuperGlobal.isDemo)
+        {
+            EzGUI.scaleGUI();
+            EzGUI.placeTxt("Score: " + points, 55, EzGUI.HALFW, 65);
+        }
+        else
+        {
+            EzGUI.scaleGUI();
+            EzGUI.blinkTxt("Press <Enter> to Play", 80, EzGUI.HALFW, EzGUI.HALFH);
+        }
     }
         
     void togglePause(){
