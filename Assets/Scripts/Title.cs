@@ -27,7 +27,7 @@ public class Title : MonoBehaviour {
                 if (Time.time - startTime >= demoTime)
                 {
                     GlobalScript.isDemo = true;
-                    GlobalScript.currentLevel = (int)(Random.value * numberOfLvl);
+                    GlobalScript.currentLevel = (int)(Random.value * numberOfLvl) + 1;
                     Application.LoadLevel("stage" + GlobalScript.currentLevel);
                 }
                 break;
