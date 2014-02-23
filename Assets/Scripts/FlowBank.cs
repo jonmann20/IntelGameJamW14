@@ -8,7 +8,7 @@ public class FlowBank : MonoBehaviour {
 
 	public void Awake()
 	{
-		initFlowPoints(4);
+		initFlowPoints(0);
 	}
 
 	//PARSE FLOW FILE FOR STAGE stageNumber
@@ -16,7 +16,7 @@ public class FlowBank : MonoBehaviour {
 	{
 		string fileName = "stage" + stageNumber.ToString() + "flow";
 		string content = (Resources.Load(fileName) as TextAsset).text;
-		print("FILE_LOADED: " + stageNumber.ToString());
+//		print("FILE_LOADED: " + stageNumber.ToString());
 		
 		string xCoordinateString = "";
 		string yCoordinateString = "";
@@ -50,7 +50,7 @@ public class FlowBank : MonoBehaviour {
 
 		foreach(Vector2 v in flowPoints)
 		{
-			print(v.ToString());
+			//print(v.ToString());
 		}
 	}
 }

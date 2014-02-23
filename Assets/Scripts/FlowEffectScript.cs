@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class FlowEffectScript : MonoBehaviour {
 
-	const float FLOW_RATE = 0.02f;
+	public static float FLOW_RATE = 0.02f;
 
 	int currentStage = 4;
 	List<Vector2> flowPoints = new List<Vector2>();
@@ -39,7 +39,7 @@ public class FlowEffectScript : MonoBehaviour {
 			if(FlowBank.flowPoints[i] == p)
 				return i;
 		}
-		print("ERROR_IN: getIndexOfFlowPoint()");
+		//print("ERROR_IN: getIndexOfFlowPoint()");
 		return -1;
 	}
 
@@ -63,7 +63,7 @@ public class FlowEffectScript : MonoBehaviour {
 		positionDifferential = getDP (nearestFlowPoint, nextFlowPoint);
 
 
-		Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
+		//Debug.DrawLine(nearestFlowPoint, nextFlowPoint, Color.green);
 	}
 
 	void FixedUpdate()

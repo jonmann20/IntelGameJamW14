@@ -9,6 +9,8 @@ public class Swarm : MonoBehaviour {
 	GameObject entityPrefab;
 	GameObject AntibodyPrefab;
 
+	public bool inputEnabled = true;
+
 	public Sprite antibody, bloodCell_white;
 
 	public List<GameObject> entities;
@@ -28,19 +30,27 @@ public class Swarm : MonoBehaviour {
 	}
 
 	void Update(){
+		if(inputEnabled){
+			checkInput();
+		}
+
+		checkVelocity();
+	}
+
+	void checkInput(){
 		if(Input.GetMouseButton(0)){
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			point.z = 0;
-
+			
 			move(point);
 		}
-
+		
 		if(Input.GetMouseButtonDown(1))
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
-
+			
 			//LAUNCH ANTIBODIES
 			foreach(GameObject g in entities)
 			{
@@ -51,11 +61,9 @@ public class Swarm : MonoBehaviour {
 				Vector2 unit2 = new Vector2(unit3.x + Random.Range(-0.5f, 0.5f), unit3.y + Random.Range(-0.5f, 0.5f));
 				unit2.Normalize();
 				newAntibody.rigidbody2D.velocity = unit2 * ANTIBODY_SHOT_SPEED;
-
+				
 			}
 		}
-
-		checkVelocity();
 	}
 
 	GameObject createEntity(Vector3 pos){

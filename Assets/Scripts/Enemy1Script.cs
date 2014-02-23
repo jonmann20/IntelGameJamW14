@@ -5,7 +5,7 @@ public class Enemy1Script : Enemy {
 
 	void Update () {
 		float ratio = (health / MAX_HEALTH) * 0.5f;
-		print("health: " + health.ToString() + " ratio: " + ratio);
+//		print("health: " + health.ToString() + " ratio: " + ratio);
 
 		transform.localScale = new Vector3(ratio, ratio, ratio);
 	}

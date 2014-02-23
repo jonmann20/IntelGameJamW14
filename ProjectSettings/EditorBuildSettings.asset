@@ -10,4 +10,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/overworld.unity
   - enabled: 1
+    path: Assets/Scenes/stage0.unity
+  - enabled: 1
     path: Assets/Scenes/stage1.unity
+  - enabled: 1
+    path: Assets/Scenes/stage2.unity
+  - enabled: 1
+    path: Assets/Scenes/stage3.unity
+  - enabled: 1
+    path: Assets/Scenes/stage4.unity
+  - enabled: 1
+    path: Assets/Scenes/stage5.unity
