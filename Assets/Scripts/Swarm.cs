@@ -77,7 +77,7 @@ public class Swarm : MonoBehaviour {
 	}
 
 	void checkInput(){
-        if (Input.GetMouseButton(0) && !SuperGlobal.isDemo)
+        if (Input.GetMouseButton(0) && !GlobalScript.isDemo)
         {
 
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -87,7 +87,7 @@ public class Swarm : MonoBehaviour {
 			move(point);
 		}
 
-        if (Input.GetMouseButtonDown(1) && !SuperGlobal.isDemo)
+        if (Input.GetMouseButtonDown(1) && !GlobalScript.isDemo)
         {
 			print("EXECUTING");
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

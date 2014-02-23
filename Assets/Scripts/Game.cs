@@ -38,8 +38,13 @@ public class Game : MonoBehaviour {
     }
 
 	void Update () {
-        if (Input.GetButtonUp("Pause") && !SuperGlobal.isDemo) {
+        if (Input.GetButtonUp("Pause") && !GlobalScript.isDemo) {
             togglePause();
+        }
+        else if (GlobalScript.isDemo) {
+            if (Input.GetButtonUp("Start")) {
+                Application.LoadLevel("title");
+            }
         }
 	}
 
@@ -73,7 +78,7 @@ public class Game : MonoBehaviour {
                     break;
             }
         }
-        else if (!SuperGlobal.isDemo)
+        else if (!GlobalScript.isDemo)
         {
             EzGUI.scaleGUI();
             EzGUI.placeTxt("Score: " + points, 55, EzGUI.HALFW, 65);
