@@ -19,7 +19,7 @@ public class Swarm : MonoBehaviour {
 	public List<GameObject> entities;
 
 	const float ANTIBODY_SHOT_SPEED = 10.0f;
-	const float MAX_SPEED = 6.5f;
+	const float MAX_SPEED = 10.5f;
 
 	int spriteTimer = 120;
 
@@ -46,7 +46,7 @@ public class Swarm : MonoBehaviour {
 			updateSpriteStates();
 		}
 
-		checkVelocity();
+		//checkVelocity();
 	}
 
 	void updateSpriteStates(){
