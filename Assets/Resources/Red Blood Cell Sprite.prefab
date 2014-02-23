@@ -12,7 +12,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
-  m_Layer: 0
+  - 114: {fileID: 11400002}
+  m_Layer: 11
   m_Name: Red Blood Cell Sprite
   m_TagString: Decor
   m_Icon: {fileID: 0}
@@ -52,7 +53,7 @@ CircleCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 72cf3f13d6138418c8255726f20efac2, type: 2}
   m_IsTrigger: 0
   m_Radius: 2.29999995
   m_Center: {x: 0, y: 0}
@@ -65,6 +66,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88f5006c1dd5c435698eea16fd36734a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f27e60c4ede4dbe96c76c219a9c39c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &21200000
@@ -86,10 +98,10 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 4793ab58b5db6417d8443d66997eca16, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: .278431386}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

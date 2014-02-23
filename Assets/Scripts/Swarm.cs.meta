@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: f076e5afe4a0478419f3082b8855b6d0
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - antibody: {fileID: 21300010, guid: a44b859ddf6a6aa4e87bf00311378659, type: 3}
+  - bloodCell_white: {fileID: 21300000, guid: 52be1064484334a4495ac339e7a9b323, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

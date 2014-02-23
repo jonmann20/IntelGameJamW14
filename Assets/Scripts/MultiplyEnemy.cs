@@ -6,9 +6,24 @@ public class MultiplyEnemy : Enemy {
     static int finalState = 3;
     int timesSplit = 0;
 
+	const int SPLIT_INTERVAL = 360;
+	int splitTimer = SPLIT_INTERVAL;
+
+	void Start()
+	{
+		ANTIBODY_RESISTANCE = 5;
+		health = 15;
+	}
+
 	void Update () {
         float ratio = (health / MAX_HEALTH);
-       // print("health: " + health.ToString() + " ratio: " + ratio);
+
+		splitTimer --;
+		if(splitTimer <= 0 && numAntibodiesAttached < ANTIBODY_RESISTANCE)
+		{
+			Split();
+			splitTimer = SPLIT_INTERVAL;
+		}
 
         transform.localScale = new Vector3(ratio, ratio, ratio);
 	}
@@ -27,7 +42,7 @@ public class MultiplyEnemy : Enemy {
 
             if (numAntibodiesAttached >= ANTIBODY_RESISTANCE) 
             {
-                (renderer as SpriteRenderer).color = Color.red;
+                (renderer as SpriteRenderer).color = Color.blue;
             }	
 		}
 
@@ -42,10 +57,6 @@ public class MultiplyEnemy : Enemy {
 			else
 			{
 				Destroy(coll.gameObject);
-                if (timesSplit != finalState)
-                {
-                    Split();
-                }
 			}
 		}
 	}
@@ -67,11 +78,11 @@ public class MultiplyEnemy : Enemy {
     {
         GameObject clone = Resources.Load("MultiplyEnemy") as GameObject;
 
-        GameObject firstEnemy = Instantiate(clone, gameObject.transform.position, Quaternion.identity) as GameObject;
-        GameObject secondEnemy = Instantiate(clone, gameObject.transform.position, Quaternion.identity) as GameObject;
-
-        firstEnemy.transform.rigidbody2D.velocity = new Vector3(1, 0, 0) * 5.0f;
-        secondEnemy.transform.rigidbody2D.velocity = new Vector3(-1, 0, 0) * 5.0f;
+		Vector3 currentPos = gameObject.transform.position;
+		Vector3 newPos1 = new Vector3(currentPos.x + 0.1f, currentPos.y, 0);
+		Vector3 newPos2 = new Vector3(currentPos.x - 0.1f, currentPos.y, 0);
+		GameObject firstEnemy = Instantiate(clone, newPos1, Quaternion.identity) as GameObject;
+		GameObject secondEnemy = Instantiate(clone, newPos2, Quaternion.identity) as GameObject;
 
         firstEnemy.GetComponent<MultiplyEnemy>().Reset(++timesSplit);
         secondEnemy.GetComponent<MultiplyEnemy>().Reset(++timesSplit);

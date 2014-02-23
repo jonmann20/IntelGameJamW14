@@ -7,7 +7,7 @@ public class Overworld : MonoBehaviour {
 	public static Overworld that;
 
 	public List<GameObject> levelLocations;
-	int cur = 0;
+	public int cur = 0;
 	int max = 0;
 
 	bool isPressed = false;
@@ -19,6 +19,7 @@ public class Overworld : MonoBehaviour {
 		that = this;
 		max = levelLocations.Count - 1;
 
+		GlobalScript.currentLevel = 1;
 		levelLocations[cur].GetComponent<SpriteRenderer>().color = highlight;
 	}
 
@@ -34,7 +35,8 @@ public class Overworld : MonoBehaviour {
 		}
 
 		if(Input.GetButtonDown("Start")){
-			Application.LoadLevel("stage1");
+			string stageName = "stage" + GlobalScript.currentLevel.ToString();
+			Application.LoadLevel(stageName);
 		}
 
 		Vector3 resize = Vector3.zero;
@@ -87,5 +89,6 @@ public class Overworld : MonoBehaviour {
 		levelLocations[n].GetComponent<SpriteRenderer>().color = highlight;
 
 		cur = n;
+		GlobalScript.currentLevel = n + 1;
 	}
 }

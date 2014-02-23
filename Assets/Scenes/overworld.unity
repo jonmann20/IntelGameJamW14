@@ -748,6 +748,7 @@ MonoBehaviour:
   - {fileID: 2020792895}
   - {fileID: 687017757}
   - {fileID: 59022286}
+  cur: 0
 --- !u!1001 &1031825086
 Prefab:
   m_ObjectHideFlags: 0

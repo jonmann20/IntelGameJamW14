@@ -8,7 +8,8 @@ public class FlowBank : MonoBehaviour {
 
 	public void Awake()
 	{
-		initFlowPoints(1);
+		print("INIT WITH " + GlobalScript.currentLevel);
+		initFlowPoints(GlobalScript.currentLevel);
 	}
 
 	//PARSE FLOW FILE FOR STAGE stageNumber
