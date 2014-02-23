@@ -6,10 +6,13 @@ public class GlobalCheckScript : MonoBehaviour {
 	public GameObject GLOBALPrefab;
 
 	void Start () {
-		GameObject global = GameObject.Find("GLOBAL") as GameObject;
+		GLOBALPrefab = Resources.Load("GLOBAL") as GameObject;
+		GameObject global = GameObject.FindWithTag("Global") as GameObject;
+		print(global);
+
 		if(global == null)
 		{
-			Instantiate(global);
+			Instantiate(GLOBALPrefab);
 		}
 	}
 }
