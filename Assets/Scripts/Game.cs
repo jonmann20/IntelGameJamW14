@@ -44,7 +44,6 @@ public class Game : MonoBehaviour {
 	}
 
     void OnGUI() {
-        Debug.Log(that.paused);
         if (that.paused) {
             GUI.Box(new Rect(0, 0, Screen.width, Screen.height), " "); 
             switch (pauseState) {
@@ -68,7 +67,7 @@ public class Game : MonoBehaviour {
                     }
                     if (GUI.Button(new Rect(Screen.width / 2 - 50, Screen.height / 2 + 100, 100, 25), "Quit", buttonStyle))
                     {
-                        Application.Quit();
+                        Application.LoadLevel("title");
                         return;
                     }
                     break;
