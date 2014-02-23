@@ -10,6 +10,7 @@ public class Title : MonoBehaviour {
 
 	public GameObject bg;
 	public GameObject bg2;
+	public GameObject characters;
 
 
 	enum TitleState { START, SELECT, INSTRUCTIONS };
@@ -43,6 +44,7 @@ public class Title : MonoBehaviour {
 			case TitleState.START:
 				bg.GetComponent<SpriteRenderer>().enabled = true;
 				bg2.GetComponent<SpriteRenderer>().enabled = false;
+				characters.SetActive(false);
 
 				EzGUI.placeTxt("Blood Cell Brigade", 60, EzGUI.HALFW - 400, EzGUI.HALFH + 80);
 				EzGUI.blinkTxt("Press Start", 45, EzGUI.HALFW - 400, EzGUI.HALFH - 10);
@@ -54,7 +56,7 @@ public class Title : MonoBehaviour {
 			case TitleState.SELECT:
 				bg.GetComponent<SpriteRenderer>().enabled = false;
 				bg2.GetComponent<SpriteRenderer>().enabled = true;
-
+				characters.SetActive(false);
 
 				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 550, 110);
 				if(EzGUI.placeBtn("Start Game", 55, EzGUI.FULLW - 550, 230)){
@@ -75,6 +77,7 @@ public class Title : MonoBehaviour {
 			case TitleState.INSTRUCTIONS:
 				bg.GetComponent<SpriteRenderer>().enabled = false;
 				bg2.GetComponent<SpriteRenderer>().enabled = false;
+				characters.SetActive(true);
 
 				if(EzGUI.placeBtn("Back", 50, 150, 90)){
 					titleState = TitleState.SELECT;
@@ -82,8 +85,15 @@ public class Title : MonoBehaviour {
 				
 				EzGUI.placeTxt("How to Play", 55, EzGUI.HALFW, 200);
 				EzGUI.placeTxt("Goal: kill all the viruses and bacteria and get to the goal", 50, 650, EzGUI.HALFH - 200);
-				EzGUI.placeTxt("Move: Left Click", 50, 350, EzGUI.HALFH);
-				EzGUI.placeTxt("Shoot antibodies: Right Click", 50, 490, EzGUI.HALFH + 80);
+				EzGUI.placeTxt("Move: Left Click", 50, 350, EzGUI.HALFH - 100);
+				EzGUI.placeTxt("Shoot antibodies: Right Click", 50, 490, EzGUI.HALFH);
+
+				
+				EzGUI.placeTxt("White blood cell", 48, 220, EzGUI.FULLH - 40);
+				EzGUI.placeTxt("Antibody", 48, 570, EzGUI.FULLH - 40);
+				EzGUI.placeTxt("T4 Bacteriophage", 48, 920, EzGUI.FULLH - 40);
+				EzGUI.placeTxt("Hepatitis", 48, 1270, EzGUI.FULLH - 40);
+				EzGUI.placeTxt("Cancer cell", 48, 1680, EzGUI.FULLH - 40);
 				
 				break;
 		}
