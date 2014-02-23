@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a44b859ddf6a6aa4e87bf00311378659
+guid: 20e56129e4d2d594a94105df6785aa9b
 TextureImporter:
   serializedVersion: 2
   mipmaps:
@@ -23,7 +23,7 @@ TextureImporter:
   textureFormat: -3
   maxTextureSize: 4096
   textureSettings:
-    filterMode: -1
+    filterMode: 2
     aniso: 1
     mipBias: -1
     wrapMode: 1
@@ -45,58 +45,40 @@ TextureImporter:
     compressionQuality: 50
   spriteSheet:
     sprites:
-    - name: bacterium
+    - name: bcw_blink
       rect:
         serializedVersion: 2
-        x: 263
-        y: 724
-        width: 101
-        height: 152
+        x: 23
+        y: 522
+        width: 428
+        height: 409
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: virus
+    - name: bcw_hit
       rect:
         serializedVersion: 2
-        x: 453
-        y: 552
-        width: 40
-        height: 68
+        x: 816
+        y: 490
+        width: 428
+        height: 409
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: bloodCell_white
+    - name: bcw_lick
       rect:
         serializedVersion: 2
-        x: 731
-        y: 755
-        width: 98
-        height: 92
+        x: 0
+        y: 16
+        width: 428
+        height: 409
       alignment: 0
       pivot: {x: .5, y: .5}
-    - name: plaque
+    - name: bcw_smile
       rect:
         serializedVersion: 2
-        x: 765
-        y: 562
-        width: 20
-        height: 21
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: cancer
-      rect:
-        serializedVersion: 2
-        x: 1177
-        y: 575
-        width: 202
-        height: 301
-      alignment: 0
-      pivot: {x: .5, y: .5}
-    - name: antibody
-      rect:
-        serializedVersion: 2
-        x: 972
-        y: 965
-        width: 25
-        height: 25
+        x: 776
+        y: 0
+        width: 429
+        height: 409
       alignment: 0
       pivot: {x: .5, y: .5}
   spritePackingTag: 
