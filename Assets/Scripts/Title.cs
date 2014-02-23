@@ -11,8 +11,6 @@ public class Title : MonoBehaviour {
 	void OnGUI(){
 		EzGUI.scaleGUI();
 
-		Time.timeScale = 1.0f;
-
 		switch(titleState){
 			case TitleState.START:
 				bg.GetComponent<SpriteRenderer>().enabled = true;
@@ -29,7 +27,7 @@ public class Title : MonoBehaviour {
 
 
 				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 450, 290);
-				if(EzGUI.placeBtn("Start", 55, EzGUI.FULLW - 390, EzGUI.HALFH)){
+				if(EzGUI.placeBtn("Start Game", 55, EzGUI.FULLW - 390, EzGUI.HALFH)){
 					Application.LoadLevel("overworld");
 					return;
 				}

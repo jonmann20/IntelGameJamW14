@@ -13,6 +13,8 @@ public class Overworld : MonoBehaviour {
 	bool isPressed = false;
 	Color highlight = Color.green;
 
+	bool sizeDown = false;
+
 	void Awake(){
 		that = this;
 		max = levelLocations.Count - 1;
@@ -36,11 +38,20 @@ public class Overworld : MonoBehaviour {
 		}
 
 		Vector3 resize = Vector3.zero;
-		if(levelLocations[cur].transform.localScale.x < 2){
-			resize = new Vector3(1 * Time.deltaTime, 1* Time.deltaTime, 0);
+		if(levelLocations[cur].transform.localScale.x > 1.3f){
+			sizeDown = true;
 		}
-		else if(levelLocations[cur].transform.localScale.x > 1){
-			resize = new Vector3(-1* Time.deltaTime, -1* Time.deltaTime, 0);
+		else if(levelLocations[cur].transform.localScale.x < 1){
+			sizeDown = false;
+		}
+
+		float s = 0.8f * Time.deltaTime;
+
+		if(sizeDown){
+			resize = new Vector3(-s, -s, 0);
+		}
+		else {
+			resize = new Vector3(s, s, 0);
 		}
 
 		levelLocations[cur].transform.localScale += resize; //Vector3.Lerp(levelLocations[cur].transform.localScale, levelLocations[cur].transform.localScale + resize, 1f);
@@ -49,9 +60,10 @@ public class Overworld : MonoBehaviour {
 	void OnGUI(){
 		EzGUI.scaleGUI();
 
-		EzGUI.placeTxt("Select a level.", 57, 520, 75);
-		EzGUI.placeTxt("Level " + (cur + 1), 57, 520, 175);
-		EzGUI.blinkTxt("Press Enter", 48, 520, EzGUI.HALFH);
+		EzGUI.placeTxt("Click to select", 47, EzGUI.FULLW - 210, 80);
+		EzGUI.placeTxt("a level:", 47, EzGUI.FULLW - 210, 180);
+		EzGUI.placeTxt("Level " + (cur + 1) + " selected", 60, 480, 165);
+		EzGUI.blinkTxt("Press Enter", 47, 480, EzGUI.HALFH);
 	}
 
 	void updateMap(bool isRight){
