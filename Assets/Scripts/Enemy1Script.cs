@@ -10,7 +10,6 @@ public class Enemy1Script : Enemy {
 
 	void Update () {
 		float ratio = (health / MAX_HEALTH) * 0.5f;
-
 		transform.localScale = new Vector3(ratio, ratio, ratio);
 	}
 }
