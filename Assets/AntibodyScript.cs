@@ -12,6 +12,5 @@ public class AntibodyScript : MonoBehaviour {
 		life --;
 		if(life <= 0)
 			Destroy(gameObject);
-		print(life);
 	}
 }
