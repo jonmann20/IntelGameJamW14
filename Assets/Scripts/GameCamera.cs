@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameCamera : MonoBehaviour {
 
 	Camera camera;
-	float minSize = 6.0f;
+	float minSize = 5.8f;
 	
 	Vector3 center;
 	float size;

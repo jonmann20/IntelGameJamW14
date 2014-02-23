@@ -40,8 +40,6 @@ public class ItsATrap : MonoBehaviour {
 	
 	void OnTriggerExit2D(Collider2D col){
 		if(!triggerd && col.gameObject.tag == "Player"){
-			print ("triggered");
-
 			triggerd = true;
 			Swarm.that.inputEnabled = false;
 			GetComponent<SpriteRenderer>().enabled = true;

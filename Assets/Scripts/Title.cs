@@ -62,7 +62,7 @@ public class Title : MonoBehaviour {
 
 	void OnGUI() {
 		Time.timeScale = 1.0f;
-		// GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Resources.Load<Texture>("Images/titleBack"), ScaleMode.ScaleAndCrop);
+        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Resources.Load<Texture>("Images/titleScreen"), ScaleMode.ScaleAndCrop);
 
 		switch (titleState) {
 			case TitleState.START:
