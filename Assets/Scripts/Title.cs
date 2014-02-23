@@ -13,8 +13,7 @@ public class Title : MonoBehaviour {
 	enum TitleState { START, SELECT, INSTRUCTIONS };
 	TitleState titleState = TitleState.START;
 
-    void Update()
-    {
+    void Update(){
         if (Time.time - startTime >= demoTime)
         {
             SuperGlobal.isDemo = true;

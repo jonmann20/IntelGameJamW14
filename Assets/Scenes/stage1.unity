@@ -2285,8 +2285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputEnabled: 1
-  antibody: {fileID: 21300010, guid: a44b859ddf6a6aa4e87bf00311378659, type: 3}
-  bloodCell_white: {fileID: 21300004, guid: a44b859ddf6a6aa4e87bf00311378659, type: 3}
   entities: []
 --- !u!114 &981081401
 MonoBehaviour:
