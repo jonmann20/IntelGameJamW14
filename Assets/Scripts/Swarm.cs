@@ -30,7 +30,17 @@ public class Swarm : MonoBehaviour {
 	}
 
 	void Update(){
-		if(Input.GetMouseButton(0)){
+		if(inputEnabled){
+			checkInput();
+		}
+
+		checkVelocity();
+	}
+	
+	void checkInput(){
+        if (Input.GetMouseButton(0) && !SuperGlobal.isDemo)
+        {
+
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			point.z = 0;
@@ -38,8 +48,9 @@ public class Swarm : MonoBehaviour {
 			move(point);
 		}
 
-		if(Input.GetMouseButtonDown(1))
-		{
+        if (Input.GetMouseButtonDown(1) && !SuperGlobal.isDemo)
+        {
+			print("EXECUTING");
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 

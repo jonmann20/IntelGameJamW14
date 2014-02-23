@@ -3,15 +3,28 @@ using System.Collections;
 
 public class Title : MonoBehaviour {
 
+    int demoTime = 5;
+    int numberOfLvl = 4;
+
+    float startTime;
+
 	public GameObject bg;
 
 	enum TitleState { START, SELECT, INSTRUCTIONS };
 	TitleState titleState = TitleState.START;
 
+    void Update()
+    {
+        if (Time.time - startTime >= demoTime)
+        {
+            SuperGlobal.isDemo = true;
+            Application.LoadLevel("stage5");
+            //Application.LoadLevel("stage" + (int)(Random.value * numberOfLvl));
+        }
+    }
+
 	void OnGUI(){
 		EzGUI.scaleGUI();
-
-		Time.timeScale = 1.0f;
 
 		switch(titleState){
 			case TitleState.START:
@@ -29,7 +42,7 @@ public class Title : MonoBehaviour {
 
 
 				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 450, 290);
-				if(EzGUI.placeBtn("Start", 55, EzGUI.FULLW - 390, EzGUI.HALFH)){
+				if(EzGUI.placeBtn("Start Game", 55, EzGUI.FULLW - 390, EzGUI.HALFH)){
 					Application.LoadLevel("overworld");
 					return;
 				}

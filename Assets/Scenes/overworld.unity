@@ -748,6 +748,7 @@ MonoBehaviour:
   - {fileID: 2020792895}
   - {fileID: 687017757}
   - {fileID: 59022286}
+  cur: 0
 --- !u!1001 &1031825086
 Prefab:
   m_ObjectHideFlags: 0
@@ -880,7 +881,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365861683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.4300003, y: -.758522868, z: -10}
+  m_LocalPosition: {x: 9.75, y: -.758522868, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 679638075}
