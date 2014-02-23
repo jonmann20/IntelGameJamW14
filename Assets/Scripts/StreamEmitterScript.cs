@@ -14,7 +14,7 @@ public class StreamEmitterScript : MonoBehaviour {
 	const int ANTIBODY_INTERVAL = 360;
 	float antibodyTimer = ANTIBODY_INTERVAL + 90;
 
-	const int RED_INTERVAL = 60;
+	const int RED_INTERVAL = 360;
 	float redTimer = RED_INTERVAL + 15;
 
 	// Use this for initialization
