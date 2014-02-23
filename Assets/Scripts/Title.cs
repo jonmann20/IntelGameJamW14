@@ -3,118 +3,60 @@ using System.Collections;
 
 public class Title : MonoBehaviour {
 
-	public Font font;
-	public Texture border;
+	public GameObject bg;
 
-	public GUIStyle headingStyle = new GUIStyle();
-	public GUIStyle textStyle;
-	public GUIStyle buttonStyle;
-	public GUIStyle subheadingStyle;
-	GUIStyle blinkFadeStyle;
-	
-	public enum TitleState { START, SELECT, INSTRUCTIONS };
-	public TitleState titleState = TitleState.START;
+	enum TitleState { START, SELECT, INSTRUCTIONS };
+	TitleState titleState = TitleState.START;
 
-	bool fadeOut = true;
-	float alphaCounter = 0f;
+	void OnGUI(){
+		EzGUI.scaleGUI();
 
-	TitleState ctaPointer = TitleState.START;
-	string[] cta = new string[3]{"Start", "Instructions", "Quit"};
+		Time.timeScale = 1.0f;
 
-	void Start(){
-		headingStyle.normal.textColor = Color.white;
-		headingStyle.font = font;
-		headingStyle.fontSize = 40;
-		headingStyle.alignment = TextAnchor.MiddleCenter;
-		headingStyle.wordWrap = true;
-		subheadingStyle = new GUIStyle(headingStyle);
-		subheadingStyle.fontSize = 18;		
-		blinkFadeStyle = new GUIStyle(subheadingStyle);
-		textStyle = new GUIStyle(headingStyle);
-		textStyle.fontSize = 14;
-		textStyle.alignment = TextAnchor.UpperLeft;
-		buttonStyle = new GUIStyle(headingStyle);
-		buttonStyle.fontSize = 14;
-	}
-
-	void Update(){
-
-		switch (titleState) {
+		switch(titleState){
 			case TitleState.START:
-				// blink cta
-				if(alphaCounter >= 1.5f){
-					fadeOut = true;
+				bg.GetComponent<SpriteRenderer>().enabled = true;
+
+				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 450, 290);
+				EzGUI.blinkTxt("Press Start", 55, EzGUI.FULLW - 440, EzGUI.FULLH - 90);
+				
+				if(Input.GetButtonDown("Start")){
+					titleState = TitleState.SELECT;
 				}
-				else if(alphaCounter <= 0f){
-					fadeOut = false;
+				break;
+			case TitleState.SELECT:
+				bg.GetComponent<SpriteRenderer>().enabled = false;
+
+
+				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 450, 290);
+				if(EzGUI.placeBtn("Start", 55, EzGUI.FULLW - 390, EzGUI.HALFH)){
+					Application.LoadLevel("overworld");
+					return;
 				}
 
-				if(Time.frameCount % 1 == 0){
-					alphaCounter += fadeOut ? -0.028f : 0.034f;
+				if(EzGUI.placeBtn("Instructions", 55, EzGUI.FULLW - 390, EzGUI.HALFH + 70)){
+					titleState = TitleState.INSTRUCTIONS;
+					return;
 				}
 
-				blinkFadeStyle.normal.textColor = new Color(255, 255, 255, alphaCounter);
+				if(EzGUI.placeBtn("Quit", 55, EzGUI.FULLW - 390, EzGUI.HALFH + 140)){
+					Application.Quit();
+				}
 
 				break;
+			case TitleState.INSTRUCTIONS:
+				bg.GetComponent<SpriteRenderer>().enabled = false;
 
+				if(EzGUI.placeBtn("Back", 50, 150, 90)){
+					titleState = TitleState.SELECT;
+				}
+				
+				EzGUI.placeTxt("How to Play", 55, EzGUI.HALFW, 200);
+				EzGUI.placeTxt("Goal: kill all the viruses and bacteria and get to the goal", 50, 650, EzGUI.HALFH - 200);
+				EzGUI.placeTxt("Move: Left Click", 50, 350, EzGUI.HALFH);
+				EzGUI.placeTxt("Shoot antibodies: Right Click", 50, 490, EzGUI.HALFH + 80);
+				
+				break;
 		}
 	}
-
-	void OnGUI() {
-		Time.timeScale = 1.0f;
-        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Resources.Load<Texture>("Images/titleScreen"), ScaleMode.ScaleAndCrop);
-
-		switch (titleState) {
-			case TitleState.START:
-
-			GUI.TextArea(new Rect(Screen.width/2 - 500, Screen.height/4 - 50, 1000, 100), "Blood Cell Brigade", headingStyle);
-
-			GUI.TextArea(new Rect(Screen.width/2 - 200, Screen.height/2, 400, 100), "Press Enter", blinkFadeStyle);
-			
-			if(Input.GetButtonUp("Start")){
-				titleState = TitleState.SELECT;				
-				return;
-			}
-			
-			break;
-		case TitleState.SELECT:
-			GUI.TextArea(new Rect(Screen.width/2 - 500, Screen.height/4 - 50, 1000, 100), "Blood Cell Brigade", headingStyle);
-
-			string[] c = new string[3];
-			cta.CopyTo(c, 0);
-
-			if(GUI.Button(new Rect(Screen.width/2 - 50, Screen.height/2 - 50, 100, 25), c[0], buttonStyle)) {
-				Application.LoadLevel("overworld");
-				return;
-			}
-			if(GUI.Button (new Rect(Screen.width/2 - 100, Screen.height/2, 200, 25), c[1], buttonStyle)) {
-				titleState = TitleState.INSTRUCTIONS;
-				return;
-			}
-			if(GUI.Button(new Rect(Screen.width/2 - 50, Screen.height/2 + 50, 100, 25), c[2], buttonStyle)) {
-				Application.Quit();
-				return;
-			}
-			
-			break;
-		case TitleState.INSTRUCTIONS:
-			if(GUI.Button(new Rect(8, 13, 70, 25), "Back", buttonStyle)){
-				titleState = TitleState.SELECT;
-				return;
-			}
-			
-			GUI.TextArea(new Rect(Screen.width/2 - 500, 15, 1000, 100), "How to Play", headingStyle);
-			
-			//Skills
-			GUI.TextArea(new Rect(Screen.width/4 - 150, Screen.height/7, 270, 100), "Instructions", subheadingStyle);
-			GUI.TextArea(new Rect(Screen.width/4, Screen.height/7 + 82, 700, 300), "We need them", textStyle);
-			
-			break;
-		default:
-			
-			break;
-		}
-	}
-	
-	
 }

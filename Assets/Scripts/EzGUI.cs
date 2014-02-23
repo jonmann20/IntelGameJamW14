@@ -28,6 +28,19 @@ public class EzGUI : MonoBehaviour {
 		Vector2 size = style.CalcSize(content);
 		GUI.Label(new Rect(x - size.x/2, y - size.y, size.x, size.y), content, style);
 	}
+
+	public static bool placeBtn(string str, int fontSize, float x, float y){
+		GUIContent content = new GUIContent(str);
+
+		GUIStyle style = new GUIStyle();
+		style.normal.textColor = Color.white;
+		style.alignment = TextAnchor.MiddleCenter;
+		//style.wordWrap = true;
+		style.fontSize = fontSize;
+
+		Vector2 size = style.CalcSize(content);
+		return GUI.Button(new Rect(x - size.x/2, y - size.y, size.x, size.y), content, style);
+	}
 	
 	public static void blinkTxt(string str, int fontSize, float x, float y) {
 		GUIContent content = new GUIContent(str);
