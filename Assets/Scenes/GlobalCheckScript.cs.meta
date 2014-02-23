@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: e1c6c72117a014d04afc9ae5c65356ac
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - GLOBALPrefab: {fileID: 100000, guid: ce8bfe59a1f2642158e0a174dc3d8e83, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
