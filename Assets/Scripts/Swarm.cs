@@ -42,15 +42,17 @@ public class Swarm : MonoBehaviour {
 	}
 	
 	void checkInput(){
-		if(Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0) && !SuperGlobal.isDemo)
+        {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			point.z = 0;
 					
 			move(point);
 		}
-		
-		if(Input.GetMouseButtonDown(1)){
+
+        if (Input.GetMouseButtonDown(1) && !SuperGlobal.isDemo)
+        {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			
