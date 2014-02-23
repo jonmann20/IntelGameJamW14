@@ -16,6 +16,7 @@ public class FlowBank : MonoBehaviour {
 	public static void initFlowPoints(int stageNumber)
 	{
 		string fileName = "stage" + stageNumber.ToString() + "flow";
+        Debug.Log(fileName);
 		string content = (Resources.Load(fileName) as TextAsset).text;
 //		print("FILE_LOADED: " + stageNumber.ToString());
 		

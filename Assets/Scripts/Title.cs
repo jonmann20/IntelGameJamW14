@@ -13,13 +13,24 @@ public class Title : MonoBehaviour {
 	enum TitleState { START, SELECT, INSTRUCTIONS };
 	TitleState titleState = TitleState.START;
 
+    void Start()
+    {
+        Time.timeScale = 1.0f;
+        startTime = Time.time;
+    }
+
     void Update()
     {
-        if (Time.time - startTime >= demoTime)
+        switch (titleState)
         {
-            SuperGlobal.isDemo = true;
-            Application.LoadLevel("stage5");
-            //Application.LoadLevel("stage" + (int)(Random.value * numberOfLvl));
+            case TitleState.START:
+                if (Time.time - startTime >= demoTime)
+                {
+                    GlobalScript.isDemo = true;
+                    GlobalScript.currentLevel = (int)(Random.value * numberOfLvl);
+                    Application.LoadLevel("stage" + GlobalScript.currentLevel);
+                }
+                break;
         }
     }
 
