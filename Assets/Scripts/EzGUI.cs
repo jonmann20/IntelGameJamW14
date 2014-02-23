@@ -42,12 +42,14 @@ public class EzGUI : MonoBehaviour {
 		return GUI.Button(new Rect(x - size.x/2, y - size.y, size.x, size.y), content, style);
 	}
 	
-	public static void blinkTxt(string str, int fontSize, float x, float y) {
+	public static void blinkTxt(string str, int fontSize, float x, float y, bool black=false) {
 		GUIContent content = new GUIContent(str);
-		
+
+		float f = black ? 0 : 1;
+
 		GUIStyle style = new GUIStyle();
 		style.fontSize = fontSize;
-		style.normal.textColor = new Color(255, 255, 255, Mathf.PingPong(Time.time, 1));
+		style.normal.textColor = new Color(f, f, f, Mathf.PingPong(Time.time, 1));
 		
 		Vector2 size = style.CalcSize(content);
 		GUI.Label(new Rect(x - size.x/2, y - size.y, size.x, size.y), content, style);
