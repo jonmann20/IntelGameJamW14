@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour {
 	public GameObject EntityDeath;
 
 	void kill(){
-		Game.points += 10;
+		Game.points += 100;
 
 		if(Game.points % 50 == 0){
 			// new life!!

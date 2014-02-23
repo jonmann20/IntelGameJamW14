@@ -110,8 +110,11 @@ public class Swarm : MonoBehaviour {
 
 		checkVelocity();
 
-		if(!isThereACellStillAlive())
-			Application.LoadLevel("stage" + GlobalScript.currentLevel.ToString());
+        if (!isThereACellStillAlive())
+        {
+            Application.LoadLevel("stage" + GlobalScript.currentLevel.ToString());
+            Game.points = 0;
+        }
 	}
 
 	GameObject createEntity(Vector3 pos){

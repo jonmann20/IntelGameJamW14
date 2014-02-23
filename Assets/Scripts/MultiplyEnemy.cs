@@ -19,7 +19,7 @@ public class MultiplyEnemy : Enemy {
         float ratio = (health / MAX_HEALTH);
 
 		splitTimer --;
-		if(splitTimer <= 0 && numAntibodiesAttached < ANTIBODY_RESISTANCE)
+		if(splitTimer <= 0 && numAntibodiesAttached < ANTIBODY_RESISTANCE && timesSplit != finalState)
 		{
 			Split();
 			splitTimer = SPLIT_INTERVAL;
@@ -31,6 +31,13 @@ public class MultiplyEnemy : Enemy {
     public void Reset (int value){
 		timesSplit = value;
 	}
+
+    void kill()
+    {
+        Game.points += (int)(100f/(Mathf.Pow(2, timesSplit)));
+
+        Destroy(gameObject);
+    }
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Antibody")
@@ -51,8 +58,8 @@ public class MultiplyEnemy : Enemy {
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 			{
 				health --;
-				if(health <= 0)
-					Destroy(gameObject);
+                if (health <= 0)
+                    kill();
 			}
 			else
 			{
@@ -68,8 +75,8 @@ public class MultiplyEnemy : Enemy {
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 			{
 				health --;
-				if(health <= 0)
-					Destroy(gameObject);
+                if (health <= 0)
+                    kill();
 			}
 		}
 	}
@@ -85,7 +92,7 @@ public class MultiplyEnemy : Enemy {
 		GameObject secondEnemy = Instantiate(clone, newPos2, Quaternion.identity) as GameObject;
 
         firstEnemy.GetComponent<MultiplyEnemy>().Reset(++timesSplit);
-        secondEnemy.GetComponent<MultiplyEnemy>().Reset(++timesSplit);
+        secondEnemy.GetComponent<MultiplyEnemy>().Reset(timesSplit);
 
         Destroy(gameObject);
     }
