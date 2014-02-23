@@ -15,7 +15,7 @@ public class FinishLineScript : MonoBehaviour {
 	{
 		if(coll.gameObject.tag == "Player")
 			Application.LoadLevel("overworld");
-		if(coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Antibody")
+		if(coll.gameObject.tag == "Enemy" || coll.gameObject.tag == "Antibody" || coll.gameObject.tag == "Decor")
 			Destroy(coll.gameObject);
 	}
 }

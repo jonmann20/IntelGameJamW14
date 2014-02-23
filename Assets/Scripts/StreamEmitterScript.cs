@@ -6,12 +6,16 @@ public class StreamEmitterScript : MonoBehaviour {
 	//PREFABS
 	public GameObject Enemy1Prefab;
 	public GameObject AntibodyPrefab;
+	public GameObject RedBloodCellPrefab;
 
 	const int ENEMY_INTERVAL = 360;
 	float enemyTimer = ENEMY_INTERVAL;
 
 	const int ANTIBODY_INTERVAL = 360;
 	float antibodyTimer = ANTIBODY_INTERVAL + 90;
+
+	const int RED_INTERVAL = 60;
+	float redTimer = RED_INTERVAL + 15;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +36,13 @@ public class StreamEmitterScript : MonoBehaviour {
 		{
 			Instantiate(AntibodyPrefab, transform.position, Quaternion.identity);
 			antibodyTimer = ANTIBODY_INTERVAL + Random.Range(-ANTIBODY_INTERVAL * 0.5f, ANTIBODY_INTERVAL * 0.5f);
+		}
+
+		redTimer --;
+		if(redTimer <= 0)
+		{
+			Instantiate(RedBloodCellPrefab, transform.position, Quaternion.identity);
+			redTimer = RED_INTERVAL + Random.Range(-RED_INTERVAL * 0.5f, RED_INTERVAL * 0.5f);
 		}
 	}
 }
