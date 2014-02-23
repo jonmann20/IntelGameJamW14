@@ -15,18 +15,26 @@ public class ItsATrap : MonoBehaviour {
 
 				//print (x.transform.position.x + " ?>= " + transform.position.x);
 
-				if(x.transform.position.x >= transform.position.x){
+				if(x.transform.position.x + 1 >= transform.position.x){	//+1 for padding
 					check = false;
 					break;
 				}
 			}
 
-			print ("check: " + check);
+
 			if(check){
+				FlowEffectScript.FLOW_RATE = 0;
 				Swarm.that.inputEnabled = true;
 				GetComponent<PolygonCollider2D>().isTrigger = false;
 				throughDoor = true;
 			}
+		}
+	}
+
+	void OnGUI(){
+		if(!throughDoor && !Swarm.that.inputEnabled){
+			EzGUI.scaleGUI();
+			EzGUI.placeTxt("Cutscene", 90, EzGUI.HALFW, EzGUI.HALFH);
 		}
 	}
 	

@@ -8,6 +8,7 @@ public class Swarm : MonoBehaviour {
 	GameObject entitiesHolder;
 	GameObject entityPrefab;
 	GameObject AntibodyPrefab;
+	GameObject trail;
 
 	public bool inputEnabled = true;
 
@@ -16,6 +17,7 @@ public class Swarm : MonoBehaviour {
 	public List<GameObject> entities;
 
 	const float ANTIBODY_SHOT_SPEED = 10.0f;
+	const float MAX_SPEED = 6.8f;
 
 	void Awake(){
 		that = this;
@@ -24,7 +26,9 @@ public class Swarm : MonoBehaviour {
 		entityPrefab = Resources.Load<GameObject>("Entity");
 		AntibodyPrefab = Resources.Load<GameObject>("Antibody");
 
-		for(int i=0; i < 10; ++i){
+		trail = Resources.Load<GameObject>("MouseTrail");
+
+		for(int i=0; i < 12; ++i){
 			GameObject entity = createEntity(new Vector3(2.5f + Random.Range(0.0f, 1.0f), 2, 0));
 		}
 	}
@@ -36,18 +40,17 @@ public class Swarm : MonoBehaviour {
 
 		checkVelocity();
 	}
-
+	
 	void checkInput(){
 		if(Input.GetMouseButton(0)){
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			point.z = 0;
-			
+					
 			move(point);
 		}
 		
-		if(Input.GetMouseButtonDown(1))
-		{
+		if(Input.GetMouseButtonDown(1)){
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 			
@@ -76,12 +79,15 @@ public class Swarm : MonoBehaviour {
 	}
 
 	public void move(Vector3 p){
+		GameObject mTrail = Instantiate(trail, p, Quaternion.identity) as GameObject;
+		Destroy(mTrail, 0.2f);
+
 		for(int i=0; i < entities.Count; ++i){
 			if(entities[i] == null)
 				continue;
 
 			if(checkDirChange(entities[i], p)){
-				entities[i].rigidbody2D.velocity *= 0.25f;
+				entities[i].rigidbody2D.velocity *= 0.45f;	// reverse direction smoothing
 			}
 
 			Vector3 diff = p - entities[i].transform.position;
@@ -105,15 +111,14 @@ public class Swarm : MonoBehaviour {
 		for(int i=0; i < entities.Count; ++i){
 			if(entities[i] == null)
 				continue;
+
 			Vector3 vel = entities[i].rigidbody2D.velocity;
 
-			if(vel.x > 3){
-				vel.x = 3;
-				entities[i].rigidbody2D.velocity = new Vector3(3, vel.y, 0);
+			if(vel.x > MAX_SPEED){
+				entities[i].rigidbody2D.velocity = new Vector3(MAX_SPEED, vel.y, 0);
 			}
-			else if(vel.x < -3){
-				vel.x = -3;
-				entities[i].rigidbody2D.velocity = new Vector3(-3, vel.y, 0);
+			else if(vel.x < -MAX_SPEED){
+				entities[i].rigidbody2D.velocity = new Vector3(-MAX_SPEED, vel.y, 0);
 			}
 		}
 	}

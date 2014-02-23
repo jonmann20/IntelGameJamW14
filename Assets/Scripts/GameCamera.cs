@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class GameCamera : MonoBehaviour {
 
-	public Camera camera;
-	public float minSize = 7.0f;
+	Camera camera;
+	float minSize = 6.0f;
 	
 	Vector3 center;
 	float size;
@@ -13,6 +13,7 @@ public class GameCamera : MonoBehaviour {
 	List<GameObject> swarm;
 
 	void Start(){
+		camera = Camera.main;
 		swarm = Swarm.that.entities;
 	}
 
