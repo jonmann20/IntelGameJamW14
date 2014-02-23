@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1741e52f9bb671c46802b6d6e22559a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityDeath: {fileID: 0}
+  EntityDeath: {fileID: 100000, guid: d316bfaa85dab450884a507871ba86ed, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

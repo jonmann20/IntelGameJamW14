@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour {
 
 	public GameObject EntityDeath;
 
-	void kill(){
+	public virtual void kill(){
 		Game.points += 10;
 
 		if(Game.points % 50 == 0){
@@ -32,6 +32,8 @@ public abstract class Enemy : MonoBehaviour {
 			
 			if(numAntibodiesAttached >= ANTIBODY_RESISTANCE)
 				(renderer as SpriteRenderer).color = Color.blue;
+
+			coll.gameObject.SendMessage("disableLife");
 		}
 		
 		if (coll.gameObject.tag == "Player")

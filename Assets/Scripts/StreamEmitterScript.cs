@@ -19,7 +19,7 @@ public class StreamEmitterScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		(renderer as SpriteRenderer).enabled = false;
 	}
 	
 	// Update is called once per frame

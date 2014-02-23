@@ -12,6 +12,7 @@ public class RedBloodCellEmitter : MonoBehaviour {
 
 	void Start()
 	{
+		(renderer as SpriteRenderer).enabled = false;
 		redTimer = RED_INTERVAL + 15;
 	}
 
