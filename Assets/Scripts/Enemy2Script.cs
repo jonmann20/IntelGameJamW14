@@ -26,4 +26,6 @@ public class Enemy2Script : Enemy {
 		}*/
 
 	}
+
+	protected override int getPointValue() { return 5; }
 }

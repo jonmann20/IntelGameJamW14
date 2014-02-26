@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class Game : MonoBehaviour {
-	
+
+	const int POINTS_FOR_EXTRA_ENTITY = 50;
+
     public Font font;
     public Texture border;
 
@@ -101,4 +103,16 @@ public class Game : MonoBehaviour {
 
         that.paused = !that.paused;
     }
+
+	//bool: got over POINTS_FOR_EXTRA_ENTITY points
+	public static bool increasePoints(int n)
+	{
+		points += n;
+		if(points >= POINTS_FOR_EXTRA_ENTITY)
+		{
+			points -= POINTS_FOR_EXTRA_ENTITY;
+			return true;
+		}
+		return false;
+	}
 }

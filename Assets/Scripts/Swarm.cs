@@ -89,7 +89,6 @@ public class Swarm : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(1) && !GlobalScript.isDemo)
         {
-			print("EXECUTING");
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Vector3 point = ray.origin + (ray.direction * Camera.main.transform.position.z);
 
@@ -110,8 +109,11 @@ public class Swarm : MonoBehaviour {
 
 		checkVelocity();
 
-		if(!isThereACellStillAlive())
-			Application.LoadLevel("stage" + GlobalScript.currentLevel.ToString());
+        if (!isThereACellStillAlive())
+        {
+            Application.LoadLevel("stage" + GlobalScript.currentLevel.ToString());
+            Game.points = 0;
+        }
 	}
 
 	GameObject createEntity(Vector3 pos){
@@ -126,7 +128,6 @@ public class Swarm : MonoBehaviour {
 		if(idx == 1){ // no "hit" state for start
 			idx = 0;
 		}
-		print (idx);
 		sRend.sprite = sprites[idx];
 
 		return entity;

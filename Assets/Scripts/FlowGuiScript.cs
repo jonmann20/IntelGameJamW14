@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class FlowGuiScript : MonoBehaviour {
 
@@ -30,7 +31,7 @@ public class FlowGuiScript : MonoBehaviour {
 			flowPoints.Add (myPoint);
 		}
 	}
-	/*
+
 	void OnGUI() {
 		currentStageText = GUI.TextField(new Rect(10, 50, 60, 20), currentStageText, 25);
 		if(GUI.Button(new Rect(70, 10, 120, 20), "Save new flow file"))
@@ -43,6 +44,7 @@ public class FlowGuiScript : MonoBehaviour {
 
 			string fileName = "stage" + currentStageText + "flow";
 			//System.IO.File.WriteAllText("Assets/Resources/" + fileName + ".txt", writeContent);
+			print(writeContent);
 		}
-	}*/
+	}
 }

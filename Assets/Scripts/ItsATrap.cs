@@ -23,7 +23,7 @@ public class ItsATrap : MonoBehaviour {
 
 
 			if(check){
-				FlowEffectScript.FLOW_RATE = 0;
+				FlowBank.FLOW_RATE = 0;
 				Swarm.that.inputEnabled = true;
 				GetComponent<PolygonCollider2D>().isTrigger = false;
 				throughDoor = true;

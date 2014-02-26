@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class FlowEffectScript : MonoBehaviour {
 
-	public static float FLOW_RATE = 0.02f;
-
 	int currentStage = 4;
 	List<Vector2> flowPoints = new List<Vector2>();
 
@@ -48,7 +46,7 @@ public class FlowEffectScript : MonoBehaviour {
 	{
 		Vector2 unit = (nextFlowPoint - nearestFlowPoint);
 		unit.Normalize();
-		return unit * FLOW_RATE;
+		return unit * FlowBank.FLOW_RATE;
 	}
 
 	void Update () {

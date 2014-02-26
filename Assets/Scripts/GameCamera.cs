@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameCamera : MonoBehaviour {
 
-	Camera camera;
+	public static Camera camera;
 	float minSize = 5.8f;
 	
 	Vector3 center;
@@ -19,7 +19,7 @@ public class GameCamera : MonoBehaviour {
 
 	void FixedUpdate () {
 		calcBoundingBox();
-		
+
 		// zoom camera
 		if(swarm.Count > 1 && size > minSize) {
 			camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, size, Time.deltaTime);	

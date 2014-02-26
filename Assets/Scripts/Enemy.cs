@@ -9,18 +9,23 @@ public abstract class Enemy : MonoBehaviour {
 	protected int numAntibodiesAttached = 0;
 	protected float health = 20;
 
-	public GameObject EntityDeath;
+	public GameObject EntityDeathPrefab;
+	public GameObject EntityPrefab;
 
-	public virtual void kill(){
-		Game.points += 10;
-
-		if(Game.points % 50 == 0){
-			// new life!!
+	//VIRTUAL FUNCTIONS
+	protected virtual void AuxKill() { }
+	protected virtual int getPointValue() { return 0; }
+	protected virtual void kill(){
+		if(Game.increasePoints(getPointValue()))
+		{
+			GameObject newEntity = Instantiate(EntityPrefab, transform.position, Quaternion.identity) as GameObject;
+			Swarm.that.entities.Add(newEntity);
 		}
 
+		AuxKill();
 		Destroy(gameObject);
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Antibody")
 		{
@@ -47,7 +52,7 @@ public abstract class Enemy : MonoBehaviour {
 			}
 			else
 			{
-				Instantiate(EntityDeath, coll.gameObject.transform.position, coll.gameObject.transform.rotation);
+				Instantiate(EntityDeathPrefab, coll.gameObject.transform.position, coll.gameObject.transform.rotation);
 				Destroy(coll.gameObject);
 			}
 		}

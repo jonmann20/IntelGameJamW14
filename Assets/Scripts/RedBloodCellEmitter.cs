@@ -7,7 +7,7 @@ public class RedBloodCellEmitter : MonoBehaviour {
 	//PREFABS
 	public GameObject RedBloodCellPrefab;
 	
-	public int RED_INTERVAL = 60;
+	public int RED_INTERVAL = 30;
 	float redTimer;
 
 	void Start()

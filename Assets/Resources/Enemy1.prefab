@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98356974690404e22a530f3d415b7ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityDeath: {fileID: 100000, guid: d316bfaa85dab450884a507871ba86ed, type: 2}
+  EntityDeathPrefab: {fileID: 100000, guid: d316bfaa85dab450884a507871ba86ed, type: 2}
+  EntityPrefab: {fileID: 100000, guid: fb90d4fb159f3fe4c9171c999f911050, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

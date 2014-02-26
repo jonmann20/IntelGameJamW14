@@ -2,7 +2,9 @@ fileFormatVersion: 2
 guid: 5f09d10e5df084bbd8314fc44ba8146d
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - EntityDeathPrefab: {fileID: 100000, guid: d316bfaa85dab450884a507871ba86ed, type: 2}
+  - EntityPrefab: {fileID: 100000, guid: fb90d4fb159f3fe4c9171c999f911050, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
