@@ -60,7 +60,8 @@ public class Title : MonoBehaviour {
 
 				EzGUI.placeTxt("by Nick Dedenbach, Nickie Gregor, Helen Lai,", 45, EzGUI.HALFW + 350, EzGUI.HALFH + 450);
 				EzGUI.placeTxt("Sarah Ovresat, Jon Wiedmann, and Austin Yarger", 45, EzGUI.HALFW + 350, EzGUI.HALFH + 500);
-
+				EzGUI.placeTxt("'Aquatic Ambiance' composed by David Wise for Donkey Kong Country (SNES). Rights Nintendo.", 20, EzGUI.HALFW + 350, EzGUI.HALFH + 520);
+				
 				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 550, 110);
 				if(EzGUI.placeBtn("Start Game", 55, EzGUI.FULLW - 550, 230)){
 					Application.LoadLevel("overworld");
