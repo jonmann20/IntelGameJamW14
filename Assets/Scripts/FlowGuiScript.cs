@@ -32,7 +32,7 @@ public class FlowGuiScript : MonoBehaviour {
 		}
 	}
 
-	void OnGUI() {
+	/*void OnGUI() {
 		currentStageText = GUI.TextField(new Rect(10, 50, 60, 20), currentStageText, 25);
 		if(GUI.Button(new Rect(70, 10, 120, 20), "Save new flow file"))
 		{
@@ -46,5 +46,5 @@ public class FlowGuiScript : MonoBehaviour {
 			//System.IO.File.WriteAllText("Assets/Resources/" + fileName + ".txt", writeContent);
 			print(writeContent);
 		}
-	}
+	}*/
 }

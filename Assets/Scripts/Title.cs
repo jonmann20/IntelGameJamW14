@@ -48,7 +48,7 @@ public class Title : MonoBehaviour {
 
 				EzGUI.placeTxt("Blood Cell Brigade", 60, EzGUI.HALFW - 400, EzGUI.HALFH + 80);
 				EzGUI.blinkTxt("Press Start", 45, EzGUI.HALFW - 400, EzGUI.HALFH - 10);
-				
+
 				if(Input.GetButtonDown("Start")){
 					titleState = TitleState.SELECT;
 				}
@@ -57,6 +57,9 @@ public class Title : MonoBehaviour {
 				bg.GetComponent<SpriteRenderer>().enabled = false;
 				bg2.GetComponent<SpriteRenderer>().enabled = true;
 				characters.SetActive(false);
+
+				EzGUI.placeTxt("by Nick Dedenbach, Nickie Gregor, Helen Lai,", 45, EzGUI.HALFW + 350, EzGUI.HALFH + 450);
+				EzGUI.placeTxt("Sarah Ovresat, Jon Wiedmann, and Austin Yarger", 45, EzGUI.HALFW + 350, EzGUI.HALFH + 500);
 
 				EzGUI.placeTxt("Blood Cell Brigade", 70, EzGUI.FULLW - 550, 110);
 				if(EzGUI.placeBtn("Start Game", 55, EzGUI.FULLW - 550, 230)){
